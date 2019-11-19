@@ -20,7 +20,7 @@ def register(request):
             email = request.POST['email'],
             password = pw_hash
         )
-        return redirect('/user/success')
+        return redirect('/savour/dashboard')
 
 def login(request):
     if request.method == 'POST':
@@ -32,16 +32,11 @@ def login(request):
         if bcrypt.checkpw(request.POST['password'].encode(), user.password.encode()):
             request.session['user_id'] = user.id
             request.session['first_name'] = user.first_name
-            return redirect('/user/success')
+            return redirect('/savour/dashboard')
         else:
             messages.error(request, "Email or Password is incorrect.")
             return redirect ('/')
-    return redirect('/user/success')
-def success(request):
-    if not 'user_id' in request.session:
-        messages.error(request, "Please log in!")
-        return redirect ('/')
-    return render(request, "login_app/success.html")
+    return redirect('/savour/dashboard')
 
 def logout(request):
     request.session.clear()
