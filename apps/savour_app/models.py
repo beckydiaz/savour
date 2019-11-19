@@ -21,8 +21,6 @@ class RecipeManager(models.Manager):
         return errors
 
 class Ingredient(models.Model):
-    quantity=models.FloatField()
-    measurement=models.CharField(max_length=45)
     name=models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -30,7 +28,7 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField()
+    image = models.CharField(max_length=455)
     user = models.ForeignKey(User, related_name="recipes")
     ingredients = models.ManyToManyField(Ingredient, related_name="recipes")
     created_at = models.DateTimeField(auto_now_add=True)
