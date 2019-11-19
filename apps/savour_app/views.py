@@ -11,6 +11,16 @@ def savour_dashboard(request):
 #     context = {
 #     'user': User.objects.get(id = request.session['user_id'])
 #    }
-    return render(request, 'savour_dashboard.html')
+    return render(request, 'savour_app/savour_dashboard.html')
 
-# Create your views here.
+def savour_recipes(request):
+    return render(request, 'savour_app/savour_recipes.html')
+
+def savour_favorites(request):
+    return render(request, 'savour_app/savour_favorites.html')
+
+def savour_list(request):
+    return render(request, 'savour_app/savour_list.html')
+
+def savour_pantry(request):
+    return render(request, 'savour_app/savour_pantry.html')
