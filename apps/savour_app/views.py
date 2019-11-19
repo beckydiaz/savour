@@ -5,9 +5,9 @@ import bcrypt
 
 
 def savour_dashboard(request):
-#     if not 'user_id' in request.session:
-#         messages.error(request, "Please log in!")
-#         return redirect ('/')
+    if not 'user_id' in request.session:
+        messages.error(request, "Please log in!")
+        return redirect ('/')
 #     context = {
 #     'user': User.objects.get(id = request.session['user_id'])
 #    }
