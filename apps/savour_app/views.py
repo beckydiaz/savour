@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from .models import *
-import bcrypt
+import bcrypt, requests
+from bs4 import BeautifulSoup
 
 
 def savour_dashboard(request):
@@ -21,11 +22,9 @@ def generate_lists(request):
         recipes = soup.find_all(class_='recipe-ingred_txt added')
         for recipe in recipes:
             ingredient = recipe.get_text()
-            ingredient.objects.create(name='ingredient')
-        context: {
-            ingredient: Ingredient.objects.all()
-        }
-        return redirect('savour/list', context)
+            Ingredient.objects.create(name=ingredient)
+        for recipe in recipes:
+    return redirect('/savour/dashboard')
 
 
 def savour_recipes(request):
@@ -35,7 +34,15 @@ def savour_favorites(request):
     return render(request, 'savour_app/savour_favorites.html')
 
 def savour_list(request):
-    return render(request, 'savour_app/savour_list.html')
+    context = {
+        "ingredients": Ingredient.objects.exclude(name='1/2 teaspoon salt').exclude(name= '1/4 teaspoon salt').exclude(name='teaspoon salt')
+        }
+    return render(request, 'savour_app/savour_list.html', context)
 
 def savour_pantry(request):
     return render(request, 'savour_app/savour_pantry.html')
+
+def delete_ingredient(request, ingredient_id):
+    this_ingredient = Ingredient.objects.get(id=ingredient_id)
+    this_ingredient.delete()
+    return redirect('/savour/list')

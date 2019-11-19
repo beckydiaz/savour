@@ -43,9 +43,11 @@
 
     <div class="list-group list-group-flush" style="text-align: center;">
         {% for ingredient in ingredients %}
-        <li class="list-group-item list-group-item-action">{{{ingredient}}
-            <a class="btn btn-outline-success btn-sm" href="#" role="button">X</a>
+
+        <li class="list-group-item list-group-item-action">{{ingredient.name}}
+            <a class="btn btn-outline-success btn-sm" href=/savour/delete/{{ingredient.id}} role="button">X</a>
         </li>
+
         {% endfor %}
     </div>
 
