@@ -13,6 +13,21 @@ def savour_dashboard(request):
     }
     return render(request, 'savour_app/savour_dashboard.html', context)
 
+
+def generate_lists(request):
+    if request.method == "POST":
+        response = requests.get(request.POST['url'])
+        soup = BeautifulSoup(response.text, 'html.parser')
+        recipes = soup.find_all(class_='recipe-ingred_txt added')
+        for recipe in recipes:
+            ingredient = recipe.get_text()
+            ingredient.objects.create(name='ingredient')
+        context: {
+            ingredient: Ingredient.objects.all()
+        }
+        return redirect('savour/list', context)
+
+
 def savour_recipes(request):
     return render(request, 'savour_app/savour_recipes.html')
 
