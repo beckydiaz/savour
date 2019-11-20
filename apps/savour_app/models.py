@@ -22,8 +22,8 @@ class RecipeManager(models.Manager):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
-    unit = models.CharField(max_length=55, default=None)
-    measurement = models.FloatField(default=None)
+    unit = models.CharField(max_length=55)
+    measurement = models.FloatField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = IngredientManager() 
@@ -31,7 +31,7 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=255)
     instructions = models.CharField(max_length=255, null=True)
-    image = models.CharField(max_length=455, default=None)
+    image = models.CharField(max_length=455)
     url = models.CharField(max_length=455)
     user = models.ForeignKey(User, related_name="recipes")
     ingredients = models.ManyToManyField(Ingredient, related_name="recipes")
