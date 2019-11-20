@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import *
 import bcrypt, requests
 from bs4 import BeautifulSoup
+import re
 
 
 def savour_dashboard(request):
@@ -22,8 +23,16 @@ def generate_lists(request):
         recipes = soup.find_all(class_='recipe-ingred_txt added')
         for recipe in recipes:
             ingredient = recipe.get_text()
-            Ingredient.objects.create(name=ingredient)
-        # for recipe in recipes:
+            new_ingredient = Ingredient.objects.create(name=ingredient)
+        images = soup.find_all(class_="rec-photo")
+        for image in images:
+            recipe_photo_src = image.get('src')
+        titles = soup.find_all(class_='recipe-summary__h1')
+        for title in titles:
+            title = title.get_text()
+        new_recipe = Recipe.objects.create(title=title, image=recipe_photo_src, url=request.POST['url'])
+        new_recipe.ingredients.add(new_ingredient)
+
     return redirect('/savour/dashboard')
 
 
