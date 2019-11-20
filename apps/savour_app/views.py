@@ -23,7 +23,7 @@ def generate_lists(request):
         for recipe in recipes:
             ingredient = recipe.get_text()
             Ingredient.objects.create(name=ingredient)
-        for recipe in recipes:
+        # for recipe in recipes:
     return redirect('/savour/dashboard')
 
 
@@ -46,3 +46,7 @@ def delete_ingredient(request, ingredient_id):
     this_ingredient = Ingredient.objects.get(id=ingredient_id)
     this_ingredient.delete()
     return redirect('/savour/list')
+
+# def clear_list(request):
+#     # ingredient.all.delete()
+#     return redirect('/savour/list')
