@@ -31,7 +31,7 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=255)
     instructions = models.CharField(max_length=255, null=True)
-    image = models.CharField(max_length=455)
+    image = models.CharField(max_length=455, default=None)
     url = models.CharField(max_length=455)
     user = models.ForeignKey(User, related_name="recipes")
     ingredients = models.ManyToManyField(Ingredient, related_name="recipes")
