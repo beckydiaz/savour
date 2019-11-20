@@ -22,7 +22,7 @@ class RecipeManager(models.Manager):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
-    unit = models.CharField(max_length=55)
+    unit = models.CharField(max_length=55, default=None)
     measurement = models.FloatField(default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
