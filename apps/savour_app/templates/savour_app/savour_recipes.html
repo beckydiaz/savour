@@ -43,20 +43,23 @@
         </div>
     </div> 
     <!-- jumbotron ends -->
+
     <div class= 'main' style="text-align: center">
         <div class="card bg-light mb-3"
-            style="padding: 20px; max-width: 740px; display: inline-block; margin-left: 20px">
+            style="padding: 20px; max-width: 940px; display: inline-block; margin-left: 20px">
+            
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="https://images.media-allrecipes.com/userphotos/560x315/3214620.jpg" class="card-img"
+                    <img src="{{recipe.image}}" class="card-img"
                         alt="recipe image" style="display: inline-block; padding: 10px">
                 </div>
                 <div class="card-title" style='font-size: 24px; display: inline-block; padding: 20px'>Your recipe:
-                        <small class="text-muted">Recipe Title</small></div>
-                <button class="btn btn-success btn-block" href=''>View Recipe</button>
-            </div>
+                        <small class="text-muted">{{recipe.title}}</small></div>
+                <a href={{recipe.url}} class="btn btn-success btn-block">View Recipe</a>
+            </div> 
         </div>
     </div>
+
     <h2 class="display-4" style='text-align:center;font-size: 30px'>You might also want to make:</h2>
 <div style="text-align: center">
     <div class="card bg-light" style="width: 18rem;display: inline-block; padding: 20px; margin: 20px">
