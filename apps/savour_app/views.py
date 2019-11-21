@@ -46,7 +46,8 @@ def generate_lists(request):
             output.append(' '.join(ingredient))
         
         for i in range(0, len(output)):
-            Ingredient.objects.create(name=output[i])
+            if len(Ingredient.objects.filter(name = output[i])) == 0:
+                Ingredient.objects.create(name=output[i])
         
         images = soup.find_all(class_="rec-photo")
         for image in images:
@@ -62,6 +63,7 @@ def generate_lists(request):
 
 def savour_recipes(request):
     context = {
+        'user': User.objects.get(id = request.session['user_id']),
         "recipe": Recipe.objects.last()
     }
     return render(request, 'savour_app/savour_recipes.html', context)
@@ -70,10 +72,14 @@ def savour_favorites(request):
     return render(request, 'savour_app/savour_favorites.html')
 
 def savour_list(request):
-
+    # if not "recipe" in request.session:
+    #     request.session('recipe') = Recipe.objects.last()
+    user_recipe = Recipe.objects.filter(user= User.objects.get(id= request.session['user_id'])).last()
     context = {
-        "ingredients" : Ingredient.objects.all()
+        'user_recipe': Recipe.objects.filter(user= User.objects.get(id= request.session['user_id'])).last(),
+        'ingredients': Ingredient.objects.filter(recipes= user_recipe)
         }
+    print('user_recipe'),
     return render(request, 'savour_app/savour_list.html', context)
 
 def savour_pantry(request):
