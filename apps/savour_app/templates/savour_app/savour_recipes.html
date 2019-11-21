@@ -61,44 +61,16 @@
     </div>
 
     <h2 class="display-4" style='text-align:center;font-size: 30px'>You might also want to make:</h2>
-<div style="text-align: center">
-    <div class="card bg-light" style="width: 18rem;display: inline-block; padding: 20px; margin: 20px">
-        <img src="https://images.media-allrecipes.com/userphotos/560x315/3214620.jpg" class="card-img-top" alt="...">
+    <div class="card bg-light" style="width: 35%; margin: 0 auto; overflow: hidden; padding: 10px 0; align-items: center;  ">
+        {% for recipe in output %}
+        <img src="{{recipe.image}}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Recipe title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-success">View Recipe</a>
+            <h1 class="card-title">{{recipe.label}}</h1>
+            <a href="{{recipe.url}}" class="btn btn-success">View Recipe</a>
         </div>
+        {% endfor %}
     </div>
-    <div class="card bg-light" style="width: 18rem;display: inline-block; padding: 20px; margin: 20px">
-        <img src="https://images.media-allrecipes.com/userphotos/560x315/3214620.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Recipe title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-success">View Recipe</a>
-        </div>
-    </div>
-    <div class="card bg-light" style="width: 18rem;display: inline-block; padding: 20px; margin: 20px">
-        <img src="https://images.media-allrecipes.com/userphotos/560x315/3214620.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Recipe title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-success">View Recipe</a>
-        </div>
-    </div>
-    <div class="card bg-light" style="width: 18rem; display: inline-block; padding: 20px; margin: 20px">
-        <img src="https://images.media-allrecipes.com/userphotos/560x315/3214620.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Recipe title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-success">View Recipe</a>
-        </div>
-    </div>
-</div>
+
 </body>
 
 </html>
