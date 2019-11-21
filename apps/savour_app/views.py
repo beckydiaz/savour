@@ -3,18 +3,10 @@ from django.contrib import messages
 from .models import *
 import bcrypt, requests
 from bs4 import BeautifulSoup
-<<<<<<< HEAD
-<<<<<<< HEAD
-import config
-=======
-import re
->>>>>>> e8f3865b10029cc74383dec4f4fc6c14327fcef2
-=======
 import random
 import json
 import urllib.request
 import config
->>>>>>> c4012288196f41873fc0036ce811d54e1443d41d
 
 
 def savour_dashboard(request):
@@ -73,14 +65,7 @@ def generate_lists(request):
     return redirect('/savour/dashboard')
 
 def savour_recipes(request):
-<<<<<<< HEAD
-<<<<<<< HEAD
-    api = api(config.api_id, config.api_key)
-    return render(request, 'savour_app/savour_recipes.html')
-=======
-=======
     output=[]
->>>>>>> c4012288196f41873fc0036ce811d54e1443d41d
     context = {
         "pantries": Pantry.objects.all(),
         "user": User.objects.get(id=request.session['user_id']),
@@ -112,7 +97,6 @@ def savour_recipes(request):
     
 
     return render(request, 'savour_app/savour_recipes.html', context)
->>>>>>> e8f3865b10029cc74383dec4f4fc6c14327fcef2
 
 def savour_favorites(request):
     return render(request, 'savour_app/savour_favorites.html')
