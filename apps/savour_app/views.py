@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import *
 import bcrypt, requests
 from bs4 import BeautifulSoup
+import config
 
 
 def savour_dashboard(request):
@@ -28,6 +29,7 @@ def generate_lists(request):
 
 
 def savour_recipes(request):
+    api = api(config.api_id, config.api_key)
     return render(request, 'savour_app/savour_recipes.html')
 
 def savour_favorites(request):
