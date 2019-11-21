@@ -14,7 +14,7 @@
 
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: rgb(80, 78, 78);">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/savour/dashboard">
             <img src="{% static 'savour_app/img/logo?.png' %}" width="40" height="40" alt="">
             SAVOUR
         </a>
@@ -52,10 +52,12 @@
     </div>
 
     <br>
-    <a class="btn btn-dark" style="display: inline-block; width: 200px; margin-left: 600px;" href="#" role="button">Clear List</a>
-    <br><br>
-    <a class="btn btn-success btn-lg" style="display: inline-block; width: 200px; margin-left: 500px;" href="#" role="button">Buy at Shelf</a> 
-    <a class="btn btn-success btn-lg" style="display: inline-block; width: 200px;" href="#" role="button">Buy at InstaCart</a>
+    <div class="mx-auto" style="width: 15%;">
+        <a class="btn btn-dark btn-block" href="/savour/clear/list" role="button">Clear List</a>
+        <br><br>
+        <a class="btn btn-success btn-lg btn-block" href="#" role="button">Buy at Shelf</a> 
+        <a class="btn btn-success btn-lg btn-block" href="#" role="button">Buy at InstaCart</a>
+    </div>
     <p></p>
 
     <!-- Optional JavaScript -->

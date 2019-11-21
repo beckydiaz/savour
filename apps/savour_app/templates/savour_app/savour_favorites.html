@@ -14,7 +14,7 @@
 
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: rgb(80, 78, 78);">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/savour/dashboard">
             <img src="{% static 'savour_app/img/logo?.png' %}" width="40" height="40" alt="">
             SAVOUR
         </a>
@@ -49,6 +49,14 @@
             <!-- {{favorite.recipe.name}} -->
         </a>
         <!-- {% endfor %} -->
+        <a href="#" class="list-group-item list-group-item-action">
+            <img src="{% static 'savour_app/img/fave.png' %}" width="40" height="40" alt="">
+            Example Fave
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <img src="{% static 'savour_app/img/fave.png' %}" width="40" height="40" alt="">
+            Example Fave
+        </a>
         <a href="#" class="list-group-item list-group-item-action">
             <img src="{% static 'savour_app/img/fave.png' %}" width="40" height="40" alt="">
             Example Fave
