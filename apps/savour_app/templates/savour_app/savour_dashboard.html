@@ -14,7 +14,7 @@
 
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: rgb(80, 78, 78);">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/savour/dashboard">
             <img src="{% static 'savour_app/img/logo?.png' %}" width="40" height="40" alt="">
             SAVOUR
         </a>
@@ -43,7 +43,7 @@
         <!-- FORM for recipe below -->
         <form action="/savour/generate/lists" method="POST">
             {% csrf_token %}
-            <div class="input-group input-group-lg" style="width: 70%; margin-left: 195px">
+            <div class="input-group input-group-lg mx-auto" style="width:85%;">
                 <input type="text" name= "url" class="form-control" placeholder="Enter your recipe link" aria-label="recipe" aria-describedby="button-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="submit" id="button-addon2">Generate</button>
@@ -52,28 +52,28 @@
         </form>
     </div>
 
-    <div class="card text-center bg-transparent" style="width: 15rem; display: inline-block; margin-left: 190px; padding: 5px;">
+    <div class="card text-center bg-transparent" style="width: 18%; display: inline-block; margin: 45px;">
         <img src="{% static 'savour_app/img/recipes3.png' %}" height="200" class="card-img-top" alt="...">
         <div class="card-body">
             <a href="/savour/recipes" class="btn btn-success btn-lg">Recipes</a>
         </div>
     </div>
-    <div class="card text-center" style="width: 15rem; display: inline-block; margin-left: 20px; padding: 5px;">
+    <div class="card text-center" style="width: 18%; display: inline-block; margin: 45px;">
         <img src="{% static 'savour_app/img/fave.png' %}" height="200" class="card-img-top" alt="...">
         <div class="card-body">
             <a href="/savour/favorites" class="btn btn-success btn-lg">Favorites</a>
         </div>
     </div>
-    <div class="card text-center" style="width: 15rem; display: inline-block; margin-left: 20px; padding: 5px;">
+    <div class="card text-center" style="width: 18%; display: inline-block; margin: 45px;">
         <img src="{% static 'savour_app/img/list1.jpg' %}" height="200" class="card-img-top" alt="...">
         <div class="card-body">
             <a href="/savour/list" class="btn btn-success btn-lg">Grocery List</a>
         </div>
     </div>        
-    <div class="card text-center" style="width: 15rem; display: inline-block; margin-left: 20px; padding: 5px;">
+    <div class="card text-center" style="width: 18%; display: inline-block; margin: 45px;">
         <img src="{% static 'savour_app/img/pantry3.png' %}" height="200" class="card-img-top" alt="...">
         <div class="card-body">
-            <a href="#" class="btn btn-success btn-lg">Pantry</a>
+            <a href="/savour/pantry" class="btn btn-success btn-lg">Pantry</a>
         </div>
     </div>  
     <!-- <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark" style="background-color: rgb(4, 209, 4);">
