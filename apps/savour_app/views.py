@@ -107,8 +107,8 @@ def savour_recipes(request):
         for recipe in list_of_recipes:
             output.append(recipe)
 
-    # search(ingredient.name)
-    search('chicken')
+    search(ingredient.name)
+
     
 
     return render(request, 'savour_app/savour_recipes.html', context)
