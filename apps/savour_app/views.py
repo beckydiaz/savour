@@ -8,7 +8,7 @@ import re
 import random
 import json
 import urllib.request
-import config
+
 
 
 def savour_dashboard(request):
@@ -23,6 +23,7 @@ def savour_dashboard(request):
 
 def generate_lists(request):
     if request.method == "POST":
+        print('------------')
         user = User.objects.get(id = request.session['user_id'])
         response = requests.get(request.POST['url'])
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -53,6 +54,8 @@ def generate_lists(request):
         for i in range(0, len(output)):
             if len(Ingredient.objects.filter(name = output[i])) == 0:
                 Ingredient.objects.create(name=output[i])
+        print(Ingredient.objects.all())
+        print('============')
         
         images = soup.find_all(class_="rec-photo")
         for image in images:
@@ -71,8 +74,8 @@ def savour_recipes(request):
     context = {
         "pantries": Pantry.objects.all(),
         "user": User.objects.get(id=request.session['user_id']),
-        "output":output,
-        "recipe": Recipe.objects.last()
+        "output": output,
+        "posts": Recipe.objects.last()
         }
 
     kStaple=['flour', "salt", "pepper", "eggs", "egg", "butter", "oil", "olive oil", "vinegar", "balsamic venegar", "mustard", "dressing", "rice", "sugar", "white sugar", "brown sugar", "powded sugar"]
@@ -126,3 +129,6 @@ def delete_ingredient(request, ingredient_id):
 def clear_list(request):
     Ingredient.objects.all().delete()
     return redirect('/savour/list')
+
+def update_account(request):
+    return render(request, 'savour_app/savour_account.html')
