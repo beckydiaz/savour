@@ -25,6 +25,16 @@ class Ingredient(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = IngredientManager() 
+    def __repr__(self):
+        return f"<Ingredient object: {self.name} ({self.id})>"
+
+class Pantry(models.Model):
+    name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __repr__(self):
+        return f"<Ingredient object: {self.name} ({self.id})>"
 
 class Recipe(models.Model):
     title = models.CharField(max_length=255)

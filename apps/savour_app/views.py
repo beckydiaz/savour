@@ -4,10 +4,17 @@ from .models import *
 import bcrypt, requests
 from bs4 import BeautifulSoup
 <<<<<<< HEAD
+<<<<<<< HEAD
 import config
 =======
 import re
 >>>>>>> e8f3865b10029cc74383dec4f4fc6c14327fcef2
+=======
+import random
+import json
+import urllib.request
+import config
+>>>>>>> c4012288196f41873fc0036ce811d54e1443d41d
 
 
 def savour_dashboard(request):
@@ -67,13 +74,43 @@ def generate_lists(request):
 
 def savour_recipes(request):
 <<<<<<< HEAD
+<<<<<<< HEAD
     api = api(config.api_id, config.api_key)
     return render(request, 'savour_app/savour_recipes.html')
 =======
+=======
+    output=[]
+>>>>>>> c4012288196f41873fc0036ce811d54e1443d41d
     context = {
-        'user': User.objects.get(id = request.session['user_id']),
-        "recipe": Recipe.objects.last()
-    }
+        "pantries": Pantry.objects.all(),
+        "user": User.objects.get(id=request.session['user_id']),
+        "output":output,
+        }
+
+    kStaple=['flour', "salt", "pepper", "eggs", "egg", "butter", "oil", "olive oil", "vinegar", "balsamic venegar", "mustard", "dressing", "rice", "sugar", "white sugar", "brown sugar", "powded sugar"]
+    allIng= Pantry.objects.exclude(name__in = kStaple)
+    allLength = len(allIng)
+    r1 =random.randint(0, allLength)
+    ingredient=allIng[r1]
+
+    def search(query):
+        urlData = f"https://api.edamam.com/search?q={query}&app_id={config.API_ID}&app_key={config.API_KEY}"
+        webURL = urllib.request.urlopen(urlData)
+        data = webURL.read()
+        encoding = webURL.info().get_content_charset('utf-8')
+        response = json.loads(data.decode(encoding))
+        # recipe = response['hits'][0]['recipe']
+        list_of_recipes = []
+        for item in response['hits']:
+            list_of_recipes.append(item['recipe'])
+        # print(list_of_recipes[0]['label'])
+        for recipe in list_of_recipes:
+            output.append(recipe)
+
+    # search(ingredient.name)
+    search('chicken')
+    
+
     return render(request, 'savour_app/savour_recipes.html', context)
 >>>>>>> e8f3865b10029cc74383dec4f4fc6c14327fcef2
 
