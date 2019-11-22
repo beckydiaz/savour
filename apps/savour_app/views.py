@@ -65,8 +65,8 @@ def generate_lists(request):
         for title in titles:
             title = title.get_text()
             new_recipe = Recipe.objects.create(title=title, image=recipe_photo_src, url=request.POST['url'], user =user)
-        ingredients_to_add = Ingredient.objects.all()
-        new_recipe.ingredients.add(*ingredients_to_add)
+            ingredients_to_add = Ingredient.objects.all()
+            new_recipe.ingredients.add(*ingredients_to_add)
     return redirect('/savour/dashboard')
 
 def savour_recipes(request):
@@ -132,3 +132,23 @@ def clear_list(request):
 
 def update_account(request):
     return render(request, 'savour_app/savour_account.html')
+
+def instacart(request):
+    random_price = random.randint(0, 20)
+    user_recipe = Recipe.objects.filter(user= User.objects.get(id= request.session['user_id'])).last()
+    context = {
+        # "pantries": Pantry.objects.all(),
+        'user_recipe': Recipe.objects.filter(user= User.objects.get(id= request.session['user_id'])).last(),
+        'ingredients': Ingredient.objects.filter(recipes= user_recipe)
+
+    }
+    print('pantry')
+
+    return render(request, 'savour_app/savour_instacart.html', context)
+
+def checkout(request):
+    print(request.POST)
+    quantity_from_form = int(request.POST["quantity"])
+    price_from_form = float(request.POST["price"])
+    total_charge = quantity_from_form * price_from_form
+    return render(request, 'savour_app/savour_checkout.html')

@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from random import random
 from apps.login_app.models import *
 
 class IngredientManager(models.Manager):
@@ -24,7 +25,11 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    objects = IngredientManager() 
+    objects = IngredientManager()
+
+    def random_price(self):
+        return round(random() * 10, 2)
+
     def __repr__(self):
         return f"<Ingredient object: {self.name} ({self.id})>"
 
