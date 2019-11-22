@@ -27,7 +27,7 @@
                     <a class="nav-link" href="/savour/dashboard">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">My Account</a>
+                    <a class="nav-link" href="/savour/update/account">My Account</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/user/logout">Logout</a>
@@ -37,43 +37,42 @@
     </nav>
     <div class="jumbotron jumbotron-fluid" style="text-align: center">
         <div class="container">
-            <h1 class="display-4">Find a recipe to use up your ingredients!</h1>
-            <p class="lead">Based on the ingredients needed for the recipe you provided, here are other recipes you can
-                make.</p>
+            <h1 class="display-4">Check out your recipe!</h1>
         </div>
     </div> 
     <!-- jumbotron ends -->
 
-    <div class= 'main' style="text-align: center">
+    <div class= 'main' style="text-align: center" >
         <div class="card bg-light mb-3"
             style="padding: 20px; max-width: 940px; display: inline-block; margin-left: 20px">
             
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="{{posts.image}}" class="card-img"
+                    <img src="{{posts.image}}" style="width: 300px; height: 240px;" class="card-img"
                         alt="recipe image" style="display: inline-block; padding: 10px">
                 </div>
                 <div class="card-title" style='font-size: 24px; display: inline-block; padding: 20px'>Your recipe:
-                        <small class="text-muted">{{posts.title}}</small></div>
-                <a href={{posts.url}} class="btn btn-success btn-block">View Recipe</a>
+                        <small class="text-muted" style='font-size: 24px;'>{{posts.title}}</small></div><br>
+                <a href={{posts.url}} class="btn btn-success btn-block btn-lg">View Recipe</a> 
             </div> 
         </div>
     </div>
+    <br>
+    <h2 class="display-4" style='text-align:center;font-size: 30px'>Based on this recipe, check out similar recipes you may like:</h2><br>
+    <p></p>
+    <div class="card bg-light" style="width: 18%; margin: 0 auto; overflow: hidden; align-items: center;  ">
+    <a href="/savour/recipes" class="btn btn-success btn-lg">Generate more recipes</a></div>
 
-    <h2 class="display-4" style='text-align:center;font-size: 30px'>You might also want to make:</h2>
-    <div class="card bg-light" style="width: 35%; margin: 0 auto; overflow: hidden; padding: 10px 0; align-items: center;  ">
-    <a href="/savour/recipes" class="btn btn-success">More Recipes!!!</a></div>
-
-    <div class="card bg-light" style="width: 35%; margin: 0 auto; overflow: hidden; padding: 10px 0; align-items: center;  ">
-        {% for recipe in output %}
-        <img src="{{recipe.image}}" class="card-img-top" alt="...">
+    {% for recipe in output %}
+    <div class="card bg-light text-center" style="width: 27%; display: inline-block; margin: 40px; padding: 10px">
+        <img src="{{recipe.image}}" height='250' class="card-img-top" alt="...">
         <div class="card-body">
-            <h1 class="card-title">{{recipe.label}}</h1>
-            <a href="{{recipe.url}}" class="btn btn-success">View Recipe</a>
+            <h4 class="card-title">{{recipe.label}}</h4>
+            <a href="{{recipe.url}}" class="btn btn-success ">View Recipe</a>
+            <img src="{% static 'savour_app/img/fave.png' %}" width="40" height="40" alt="">            
         </div>
-        {% endfor %}
     </div>
-
+    {% endfor %}
 </body>
 
 </html>
