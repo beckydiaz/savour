@@ -10,5 +10,7 @@ url(r'^savour/pantry$', views.savour_pantry),
 url(r'^savour/update/account$', views.update_account),
 url(r'^savour/generate/lists$', views.generate_lists),
 url(r'^savour/delete/(?P<ingredient_id>\d+)$', views.delete_ingredient),
-url(r'^savour/clear/list$', views.clear_list)
+url(r'^savour/clear/list$', views.clear_list),
+url(r'^savour/instacart$', views.instacart),
+url(r'^savour/checkout$', views.checkout)
 ]
